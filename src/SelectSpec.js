@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Spec from './Spec.js'
+import slugify from 'slugify';
 
 class SelectSpec extends Component {
     render() {
@@ -7,6 +8,7 @@ class SelectSpec extends Component {
         const featureHash = feature + '-' + idx;
         const options = this.props.features[feature].map(item => 
             <Spec 
+            key={slugify(JSON.stringify(item))}
             item={item}
             feature={feature} 
             selected={selected} 

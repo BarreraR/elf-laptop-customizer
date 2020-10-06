@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Cart from './Cart';
 import Customize from './Customize';
+import Header from './Header'
 
 class App extends Component {
   state = {
@@ -37,9 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
         <main>
           <Customize 
           features={this.props.features} 

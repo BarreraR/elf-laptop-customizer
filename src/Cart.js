@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CartSpec from './CartSpec';
 import Total from './Total';
+import slugify from 'slugify';
 
 class Cart extends Component {
 
@@ -11,21 +12,17 @@ class Cart extends Component {
             const selectedOption = this.props.selected[feature];
             
             return <CartSpec 
+            key={slugify(JSON.stringify(feature))}
             featureHash={featureHash} 
             selectedOption={selectedOption} 
             feature={feature}/> 
         });
-
-        const total = Object.keys(selected).reduce(
-            (acc, curr) => acc + selected[curr].cost,
-            0
-        );
     
         return (
             <section className="main__summary">
                 <h2>Your cart</h2>
                 {summary}
-                <Total total={total}/>
+                <Total selected={selected}/>
             </section>
         );
     }

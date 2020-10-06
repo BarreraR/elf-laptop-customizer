@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import SelectSpec from './SelectSpec';
+import features from './Features'
+import slugify from 'slugify';
+
 
 class Customize extends Component {
     render() {
         const { updateFeature, selected } = this.props;
-        const features = Object.keys(this.props.features).map(  
+        const laptopFeatures = Object.keys(features).map(  
             (feature, idx) => 
                 <SelectSpec 
+                key={slugify(JSON.stringify(feature))}
                 feature={feature} 
                 idx={idx} 
-                features={this.props.features} 
+                features={features} 
                 updateFeature={updateFeature} 
                 selected={selected}/>
             );
@@ -17,7 +21,7 @@ class Customize extends Component {
         return (
             <form className="main__form">
                 <h2>Customize your laptop</h2>
-                {features}
+                {laptopFeatures}
           </form>
         );
     }
