@@ -41,7 +41,6 @@ class App extends Component {
         <Header />
         <main>
           <Customize 
-          features={this.props.features} 
           selected={this.state.selected} 
           updateFeature={this.updateFeature}/>
           
